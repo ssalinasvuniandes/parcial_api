@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AeropuertoEntity } from 'src/aeropuerto/aeropuerto.entity';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class AerolineaEntity {
@@ -17,4 +18,7 @@ export class AerolineaEntity {
 
     @Column()
     pagina_web: string;
+
+    @ManyToMany(() => AeropuertoEntity, aeropuerto => aeropuerto.aerolineas)
+    aeropuertos: AeropuertoEntity[];
 }
